@@ -1,0 +1,12 @@
+L298n
+
+ENA Pin: Controla a velocidade do motor por PULSE WIDTH MODULATION
+
+Tabela de inputs
+
+In 1   In 2      Estado 
+0       0       Motor Parado
+1	0	Motor para frente
+0	1	Motor para tras
+1	1	Motor Parado
+
