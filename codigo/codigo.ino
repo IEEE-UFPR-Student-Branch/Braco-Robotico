@@ -8,8 +8,8 @@ ESTADO estadoAtual = PARADO;
 
 //Pinos que controlam o motor driver, o primeiro e o Input 1, 
 //o segundo e oo input 2
-const int MotorDriver1 = 12;
-const int MotorDriver2 = 14;
+const int MotorDriver1 = 11;
+const int MotorDriver2 = 10;
 
 void setup() {
 
@@ -46,7 +46,7 @@ ESTADO interpretarComando(String comando){
 void MudarDeEstado(ESTADO estadoNovo) {
   estadoAtual = estadoNovo;
 
-  if (estadoAtual == PARAR){
+  if (estadoAtual == PARADO){
     digitalWrite(MotorDriver1, LOW);
     digitalWrite(MotorDriver2, LOW);
     Serial.println("comando parar");
