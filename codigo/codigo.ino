@@ -4,6 +4,8 @@ enum ESTADO {
   TRAS
 };
 
+ESTADO estadoAtual = PARADO;
+
 //Pinos que controlam o motor driver, o primeiro e o Input 1, 
 //o segundo e oo input 2
 const int MotorDriver1 = 12;
@@ -27,24 +29,36 @@ void loop() {
 
     Serial.print("comando ");
     Serial.println(comando);
-    MudarDeEstado(comando);
+    
+    ESTADO proximoEstado = interpretarComando(comando);
+    MudarDeEstado(proximoEstado);
   }
 
 }
 
-void MudarDeEstado(String comando) {
-  if (comando == "parar"){
+ESTADO interpretarComando(String comando){
+  comando.toLowerCase();
+  if(comando == "frente") return FRENTE;
+  if(comando == "tras") return TRAS;
+  return PARADO;
+}
+
+void MudarDeEstado(ESTADO estadoNovo) {
+  estadoAtual = estadoNovo;
+
+  if (estadoAtual == PARAR){
     digitalWrite(MotorDriver1, LOW);
     digitalWrite(MotorDriver2, LOW);
     Serial.println("comando parar");
   }
-  else if (comando == "frente"){
+  else if (estadoAtual == FRENTE){
     digitalWrite(MotorDriver1, HIGH);
     digitalWrite(MotorDriver2, LOW);
     Serial.println("comando frente");
   }
-  else if (comando == "tras"){
+  else if (estadoAtual == TRAS){
     digitalWrite(MotorDriver1, LOW);
     digitalWrite(MotorDriver2, HIGH);
+    Serial.println("comando tras");
   }
 }
