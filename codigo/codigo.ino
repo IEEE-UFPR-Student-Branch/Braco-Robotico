@@ -8,8 +8,8 @@ ESTADO estadoAtual = PARADO;
 
 //Pinos que controlam o motor driver, o primeiro e o Input 1, 
 //o segundo e oo input 2
-const int MotorDriver1 = 11;
-const int MotorDriver2 = 10;
+const int MotorDriver1 = 13;
+const int MotorDriver2 = 14;
 
 void setup() {
 
